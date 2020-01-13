@@ -1,3 +1,17 @@
+<style>
+  #chartdiv {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+  }
+  </style>
+  
+  <!-- Resources -->
+  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+  <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+  
 <body>
     <!-- Sidenav -->
     <% include ../partials/sidebar %>
@@ -99,17 +113,350 @@
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
+      <div class="container-fluid mt--7">
+        <div class="row">
+          <div class="col-xl-12 mb-5 mb-xl-0">
+            <div class="card bg-Secondary-default shadow">
+              <div class="card-header bg-transparent">
+               <div id="chartdiv"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-xl-8 mb-5 mb-xl-0">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Page visits</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Page name</th>
+                    <th scope="col">Visitors</th>
+                    <th scope="col">Unique users</th>
+                    <th scope="col">Bounce rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      /argon/
+                    </th>
+                    <td>
+                      4,569
+                    </td>
+                    <td>
+                      340
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      /argon/index.html
+                    </th>
+                    <td>
+                      3,985
+                    </td>
+                    <td>
+                      319
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      /argon/charts.html
+                    </th>
+                    <td>
+                      3,513
+                    </td>
+                    <td>
+                      294
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      /argon/tables.html
+                    </th>
+                    <td>
+                      2,050
+                    </td>
+                    <td>
+                      147
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      /argon/profile.html
+                    </th>
+                    <td>
+                      1,795
+                    </td>
+                    <td>
+                      190
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Social traffic</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Referral</th>
+                    <th scope="col">Visitors</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      Facebook
+                    </th>
+                    <td>
+                      1,480
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">60%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Facebook
+                    </th>
+                    <td>
+                      5,480
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">70%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Google
+                    </th>
+                    <td>
+                      4,807
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">80%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Instagram
+                    </th>
+                    <td>
+                      3,678
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">75%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      twitter
+                    </th>
+                    <td>
+                      2,645
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">30%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+        <!-- Chart code -->
+   
+        <!-- HTML -->
+        	
          <!-- Footer -->
          <% include ../partials/footer %>
         </div>
       </div>
       <!-- Include scripts -->
+      <script>
+        var gaugeChart = AmCharts.makeChart("chartdiv", {
+          "type": "gauge",
+          "theme": "none",
+          "axes": [{
+            "axisAlpha": 0,
+            "tickAlpha": 0,
+            "labelsEnabled": true,
+            "startValue": 0,
+            "endValue": 100,
+            "startAngle": 0,
+            "endAngle": 270,
+            "bands": [{
+              "color": "#eee",
+              "startValue": 0,
+              "endValue": 100,
+              "radius": "100%",
+              "innerRadius": "85%"
+            }, {
+              "color": "#84b761",
+              "startValue": 0,
+              "endValue": 80,
+              "radius": "100%",
+              "innerRadius": "85%",
+              "balloonText": "90%"
+            }, {
+              "color": "#eee",
+              "startValue": 0,
+              "endValue": 100,
+              "radius": "80%",
+              "innerRadius": "65%"
+            }, {
+              "color": "#fdd400",
+              "startValue": 0,
+              "endValue": 35,
+              "radius": "80%",
+              "innerRadius": "65%",
+              "balloonText": "35%"
+            }, {
+              "color": "#eee",
+              "startValue": 0,
+              "endValue": 100,
+              "radius": "60%",
+              "innerRadius": "45%"
+            }, {
+              "color": "#cc4748",
+              "startValue": 0,
+              "endValue": 92,
+              "radius": "60%",
+              "innerRadius": "45%",
+              "balloonText": "92%"
+            }, {
+              "color": "#eee",
+              "startValue": 0,
+              "endValue": 100,
+              "radius": "40%",
+              "innerRadius": "25%"
+            }, {
+              "color": "#67b7dc",
+              "startValue": 0,
+              "endValue": 68,
+              "radius": "40%",
+              "innerRadius": "25%",
+              "balloonText": "68%"
+            }]
+          }],
+          "allLabels": [{
+            "text": "First option",
+            "x": "49%",
+            "y": "5%",
+            "size": 15,
+            "bold": true,
+            "color": "#84b761",
+            "align": "right"
+          }, {
+            "text": "Second option",
+            "x": "49%",
+            "y": "15%",
+            "size": 15,
+            "bold": true,
+            "color": "#fdd400",
+            "align": "right"
+          }, {
+            "text": "Third option",
+            "x": "49%",
+            "y": "24%",
+            "size": 15,
+            "bold": true,
+            "color": "#cc4748",
+            "align": "right"
+          }, {
+            "text": "Fourth option",
+            "x": "49%",
+            "y": "33%",
+            "size": 15,
+            "bold": true,
+            "color": "#67b7dc",
+            "align": "right"
+          }],
+          "export": {
+            "enabled": true
+          }
+        });
+        </script>
+        
       <% include ../partials/scripts %>
     </body>

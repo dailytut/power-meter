@@ -20,7 +20,9 @@ function isAuthenticated(req, res, next) {
 router.get('/', isAuthenticated, (req, res) => {
   res.render('pages/dashboard');
 });
-
+router.get('/profile', isAuthenticated, (req, res) => {
+  res.render('pages/profile');
+});
 router.get('/Power-consumption', isAuthenticated, (req, res) => {
   res.render('CorporateBuilding/Power-consumption');
 });
