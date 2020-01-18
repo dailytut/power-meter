@@ -52,8 +52,8 @@ router.get('/Load-hour-runninghour', isAuthenticated, (req, res) => {
   res.render('Industry/Load-hour-runninghour');
 });
 
-router.get('/Maximum -demand', isAuthenticated, (req, res) => {
-  res.render('Industry/Maximum -demand');
+router.get('/Maximum-demand', isAuthenticated, (req, res) => {
+  res.render('Industry/Maximum-demand');
 });
 router.get('/Voltage-R-Y-B', isAuthenticated, (req, res) => {
   res.render('Industry/Voltage-R-Y-B');

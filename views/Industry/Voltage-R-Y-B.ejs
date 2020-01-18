@@ -1,3 +1,15 @@
+<style>
+  #chartdiv {
+    width: 100%;
+    height: 500px;
+  }
+  </style>
+  
+  <!-- Resources -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+  
 <body>
     <!-- Sidenav -->
     <% include ../partials/sidebar %>
@@ -100,7 +112,233 @@
         </div>
       </div>
 
-
+      <div class="row mt-5">
+        <div class="col-xl-12 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div id="chartdiv"></div>
+          </div>
+        </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-xl-8 mb-5 mb-xl-0">
+            <div class="card shadow">
+              <div class="card-header border-0">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <h3 class="mb-0">Page visits</h3>
+                  </div>
+                  <div class="col text-right">
+                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                  </div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <!-- Projects table -->
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Page name</th>
+                      <th scope="col">Visitors</th>
+                      <th scope="col">Unique users</th>
+                      <th scope="col">Bounce rate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        /argon/
+                      </th>
+                      <td>
+                        4,569
+                      </td>
+                      <td>
+                        340
+                      </td>
+                      <td>
+                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        /argon/index.html
+                      </th>
+                      <td>
+                        3,985
+                      </td>
+                      <td>
+                        319
+                      </td>
+                      <td>
+                        <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        /argon/charts.html
+                      </th>
+                      <td>
+                        3,513
+                      </td>
+                      <td>
+                        294
+                      </td>
+                      <td>
+                        <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        /argon/tables.html
+                      </th>
+                      <td>
+                        2,050
+                      </td>
+                      <td>
+                        147
+                      </td>
+                      <td>
+                        <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        /argon/profile.html
+                      </th>
+                      <td>
+                        1,795
+                      </td>
+                      <td>
+                        190
+                      </td>
+                      <td>
+                        <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="card shadow">
+              <div class="card-header border-0">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <h3 class="mb-0">Social traffic</h3>
+                  </div>
+                  <div class="col text-right">
+                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                  </div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <!-- Projects table -->
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Referral</th>
+                      <th scope="col">Visitors</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        Facebook
+                      </th>
+                      <td>
+                        1,480
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mr-2">60%</span>
+                          <div>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        Facebook
+                      </th>
+                      <td>
+                        5,480
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mr-2">70%</span>
+                          <div>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        Google
+                      </th>
+                      <td>
+                        4,807
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mr-2">80%</span>
+                          <div>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        Instagram
+                      </th>
+                      <td>
+                        3,678
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mr-2">75%</span>
+                          <div>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        twitter
+                      </th>
+                      <td>
+                        2,645
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mr-2">30%</span>
+                          <div>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+  
 
 
 
@@ -110,5 +348,159 @@
         </div>
       </div>
       <!-- Include scripts -->
+      <script>
+        am4core.ready(function() {
+        
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+        
+        // Create chart instance
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+        
+        // Title
+        var title = chart.titles.push(new am4core.Label());
+        title.text = "Research tools used by students";
+        title.fontSize = 25;
+        title.marginBottom = 15;
+        
+        // Add data
+        chart.data = [{
+          "category": "Search engines",
+          "negative1": -0.1,
+          "negative2": -0.9,
+          "positive1": 5,
+          "positive2": 94
+        }, {
+          "category": "Online encyclopedias",
+          "negative1": -2,
+          "negative2": -4,
+          "positive1": 19,
+          "positive2": 75
+        }, {
+          "category": "Peers",
+          "negative1": -2,
+          "negative2": -10,
+          "positive1": 46,
+          "positive2": 42
+        }, {
+          "category": "Social media",
+          "negative1": -2,
+          "negative2": -13,
+          "positive1": 33,
+          "positive2": 52
+        }, {
+          "category": "Study guides",
+          "negative1": -6,
+          "negative2": -19,
+          "positive1": 34,
+          "positive2": 41
+        }, {
+          "category": "News websites",
+          "negative1": -3,
+          "negative2": -23,
+          "positive1": 49,
+          "positive2": 25
+        }, {
+          "category": "Textbooks",
+          "negative1": -5,
+          "negative2": -28,
+          "positive1": 49,
+          "positive2": 18
+        }, {
+          "category": "Librarian",
+          "negative1": -14,
+          "negative2": -34,
+          "positive1": 37,
+          "positive2": 16
+        }, {
+          "category": "Printed books",
+          "negative1": -9,
+          "negative2": -41,
+          "positive1": 38,
+          "positive2": 12
+        }, {
+          "category": "Databases",
+          "negative1": -18,
+          "negative2": -36,
+          "positive1": 29,
+          "positive2": 17
+        }, {
+          "category": "Student search engines",
+          "negative1": -17,
+          "negative2": -39,
+          "positive1": 34,
+          "positive2": 10
+        }];
+        
+        
+        // Create axes
+        var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "category";
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.renderer.inversed = true;
+        categoryAxis.renderer.minGridDistance = 20;
+        categoryAxis.renderer.axisFills.template.disabled = false;
+        categoryAxis.renderer.axisFills.template.fillOpacity = 0.05;
+        
+        
+        var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+        valueAxis.min = -100;
+        valueAxis.max = 100;
+        valueAxis.renderer.minGridDistance = 50;
+        valueAxis.renderer.ticks.template.length = 5;
+        valueAxis.renderer.ticks.template.disabled = false;
+        valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
+        valueAxis.renderer.labels.template.adapter.add("text", function(text) {
+          return text == "Male" || text == "Female" ? text : text + "%";
+        })
+        
+        // Legend
+        chart.legend = new am4charts.Legend();
+        chart.legend.position = "right";
+        chart.legend.width = 100;
+        
+        // Use only absolute numbers
+        chart.numberFormatter.numberFormat = "#.#s";
+        
+        // Create series
+        function createSeries(field, name, color) {
+          var series = chart.series.push(new am4charts.ColumnSeries());
+          series.dataFields.valueX = field;
+          series.dataFields.categoryY = "category";
+          series.stacked = true;
+          series.name = name;
+          series.stroke = color;
+          series.fill = color;
+          
+          var label = series.bullets.push(new am4charts.LabelBullet);
+          label.label.text = "{valueX}%";
+          label.label.fill = am4core.color("#fff");
+          label.label.strokeWidth = 0;
+          label.label.truncate = false;
+          label.label.hideOversized = true;
+          label.locationX = 0.5;
+          return series;
+        }
+        
+        var interfaceColors = new am4core.InterfaceColorSet();
+        var positiveColor = interfaceColors.getFor("positive");
+        var negativeColor = interfaceColors.getFor("negative");
+        
+        createSeries("negative2", "Unlikely", negativeColor.lighten(0.5));
+        createSeries("negative1", "Never", negativeColor);
+        createSeries("positive1", "Sometimes", positiveColor.lighten(0.5));
+        createSeries("positive2", "Very often", positiveColor);
+        
+        chart.legend.events.on("layoutvalidated", function(event){
+          chart.legend.itemContainers.each((container)=>{
+            if(container.dataItem.dataContext.name == "Never"){
+              container.toBack();
+            }
+          })
+        })
+        
+        }); // end am4core.ready()
+        </script>
       <% include ../partials/scripts %>
     </body>
