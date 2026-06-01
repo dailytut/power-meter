@@ -1,4 +1,4 @@
-async function loadPage(req, res) {
+function loadPage(req, res) {
   res.render('pages/register');
 }
 

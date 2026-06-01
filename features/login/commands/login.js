@@ -1,4 +1,3 @@
-const debug = require('debug')('express:login');
 const passport = require('passport');
 
 const {
@@ -8,7 +7,6 @@ const {
 } = require('../constants');
 
 function login(req, res, next) {
-  debug('login');
   return passport.authenticate('local', (error, user) => {
     if (error || !user) {
       req.session.messages = {
@@ -17,7 +15,7 @@ function login(req, res, next) {
       return res.status(401).redirect('/login');
     }
 
-    return req.logIn(user, loginError => {
+    return req.logIn(user, (loginError) => {
       if (loginError) {
         req.session.messages = {
           errors: { internalServerError: INTERNAL_SERVER_ERROR },
