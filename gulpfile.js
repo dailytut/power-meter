@@ -1,35 +1,22 @@
-/**
- * Gulp file to automate the various tasks
- * */
-
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
-const csscomb = require('gulp-csscomb');
 const cleanCss = require('gulp-clean-css');
-const del = require('del');
+const { deleteAsync } = require('del');
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
-const wait = require('gulp-wait');
 const sourcemaps = require('gulp-sourcemaps');
-
-// Define paths
 
 const paths = {
   dist: {
     base: 'dist',
     img: 'dist/img',
-    libs: 'dist/vendor',
     fonts: 'dist/fonts',
     css: 'dist/css',
     js: 'dist/js',
     vendor: 'dist/vendor',
-  },
-  base: {
-    base: './public',
-    node: 'node_modules',
   },
   src: {
     base: './public',
@@ -44,19 +31,12 @@ const paths = {
   },
 };
 
-// Compile SCSS for dev
 function scssDev() {
   return gulp
     .src(paths.src.scss)
-    .pipe(wait(500))
     .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([require('postcss-flexbugs-fixes')])) // eslint-disable-line
-    .pipe(
-      autoprefixer({
-        browsers: ['> 1%'],
-      })
-    )
-    .pipe(csscomb())
+    .pipe(postcss([require('postcss-flexbugs-fixes')]))
+    .pipe(autoprefixer({ overrideBrowserslist: ['> 1%'] }))
     .pipe(sourcemaps.init())
     .pipe(cleanCss())
     .pipe(sourcemaps.write())
@@ -65,23 +45,15 @@ function scssDev() {
     .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
-// Compile SCSS for prod
 function scssProd() {
   return gulp
     .src(paths.src.scss)
-    .pipe(wait(500))
     .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([require('postcss-flexbugs-fixes')])) // eslint-disable-line
-    .pipe(
-      autoprefixer({
-        browsers: ['> 1%'],
-      })
-    )
-    .pipe(csscomb())
+    .pipe(postcss([require('postcss-flexbugs-fixes')]))
+    .pipe(autoprefixer({ overrideBrowserslist: ['> 1%'] }))
     .pipe(gulp.dest(`${paths.dist.base}/css`));
 }
 
-// Minify CSS
 function minifyCSS() {
   return gulp
     .src([`${paths.dist.css}/argon.css`])
@@ -90,7 +62,6 @@ function minifyCSS() {
     .pipe(gulp.dest(`${paths.dist.base}/css`));
 }
 
-// Minify JS
 function minifyJS() {
   return gulp
     .src([`${paths.src.base}/js/argon.js`])
@@ -99,17 +70,14 @@ function minifyJS() {
     .pipe(gulp.dest(`${paths.dist.base}/js`));
 }
 
-// Live reload
 function serve(done) {
   browserSync.init({
     files: ['public/**/*', 'views/**/*'],
     proxy: 'http://0.0.0.0:8000',
   });
-
   done();
 }
 
-// Watch for changes
 function watch() {
   gulp.watch(paths.src.scss, scssDev);
   gulp.watch(paths.src.js, browserSync.reload);
@@ -117,37 +85,26 @@ function watch() {
   gulp.watch(paths.src.ejs, browserSync.reload);
 }
 
-// Clean
-async function cleanDist(done) {
-  await del.sync(paths.dist.base);
-  done();
+function cleanDist() {
+  return deleteAsync(paths.dist.base);
 }
 
-// Copy JS
-async function copyJS(done) {
-  gulp.src([`${paths.src.js}`]).pipe(gulp.dest(`${paths.dist.js}`));
-  done();
+function copyJS() {
+  return gulp.src(paths.src.js).pipe(gulp.dest(paths.dist.js));
 }
 
-// Copy images
-async function copyImages(done) {
-  gulp.src([`${paths.src.img}`]).pipe(gulp.dest(`${paths.dist.img}`));
-  done();
+function copyImages() {
+  return gulp.src(paths.src.img).pipe(gulp.dest(paths.dist.img));
 }
 
-// Copy fonts
-async function copyFonts(done) {
-  gulp.src([`${paths.src.fonts}`]).pipe(gulp.dest(`${paths.dist.fonts}`));
-  done();
+function copyFonts() {
+  return gulp.src(paths.src.fonts).pipe(gulp.dest(paths.dist.fonts));
 }
 
-// Copy vendor
-async function copyVendor(done) {
-  gulp.src([`${paths.src.vendor}`]).pipe(gulp.dest(`${paths.dist.vendor}`));
-  done();
+function copyVendor() {
+  return gulp.src(paths.src.vendor).pipe(gulp.dest(paths.dist.vendor));
 }
 
-// Build
 const build = gulp.series(
   cleanDist,
   scssProd,
@@ -159,7 +116,6 @@ const build = gulp.series(
   minifyCSS
 );
 
-// Default
 const defaultTask = gulp.series(scssDev, serve, watch);
 
 module.exports = {
