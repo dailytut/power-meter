@@ -2,20 +2,13 @@ module.exports = {
   env: {
     browser: true,
     jest: true,
-    es6: true,
+    es2021: true,
     node: true,
   },
-  extends: ['airbnb/base', 'prettier'],
+  extends: ['airbnb-base', 'prettier'],
   plugins: ['prettier'],
   rules: {
     'import/no-unresolved': 0,
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        trailingComma: 'es5',
-        printWidth: 100,
-      },
-    ],
+    'prettier/prettier': ['error'],
   },
 };
