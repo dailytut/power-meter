@@ -1,9 +1,5 @@
-const Knex = require('knex');
 const bcrypt = require('bcrypt');
-
-const knexConfig = require('../../db/knexfile');
-
-const knex = Knex(knexConfig[process.env.NODE_ENV]);
+const knex = require('../../db');
 
 async function getUserForLoginData(email, password) {
   const [user] = await knex('users')
