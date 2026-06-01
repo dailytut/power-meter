@@ -1,4 +1,9 @@
 const pino = require('pino');
 
-const logger = pino({ prettyPrint: process.env.NODE_ENV === 'development' });
+const transport =
+  process.env.NODE_ENV === 'development'
+    ? { target: 'pino-pretty' }
+    : undefined;
+
+const logger = pino({ transport });
 module.exports = logger;
