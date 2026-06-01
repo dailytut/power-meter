@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const knex = require('../../db');
 
 async function createUser({ name, username: email, password }) {
-  const hashedPass = await bcrypt.hash(password, 5);
+  const hashedPass = await bcrypt.hash(password, 12);
   const [user] = await knex('users')
     .insert({
       name,

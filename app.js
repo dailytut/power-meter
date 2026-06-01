@@ -18,11 +18,11 @@ const redisStoreConfig = {
 };
 
 if (process.env.REDIS_URL) {
-  redisStoreConfig.url = process.env.REDIS_URL; // this will use the REDIS_URL required for logging into the Redis addon provided by Heroku
+  redisStoreConfig.url = process.env.REDIS_URL;
 }
 
 if (process.env.REDIS_PASSWORD) {
-  redisStoreConfig.password = process.env.REDIS_PASSWORD; // this will use the REDIS_PASSWORD if required
+  redisStoreConfig.password = process.env.REDIS_PASSWORD;
 }
 
 const redisStore = new RedisStore(redisStoreConfig);
@@ -30,7 +30,6 @@ const redisStore = new RedisStore(redisStoreConfig);
 const staticFolder = process.env.NODE_ENV === 'development' ? 'public' : 'dist';
 const app = express();
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
@@ -40,25 +39,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, staticFolder)));
 
-const { COOKIE_EXPIRATION_MS } = process.env;
+const { COOKIE_EXPIRATION_MS, SESSION_SECRET } = process.env;
+const maxAge = parseInt(COOKIE_EXPIRATION_MS, 10);
+
 app.use(
   session({
     store: redisStore,
-    secret: 'keyboard cat',
+    secret: SESSION_SECRET,
     name: process.env.SESSION_COOKIE_NAME,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
       secure: process.env.NODE_ENV === 'production',
-      expires: Date.now() + parseInt(COOKIE_EXPIRATION_MS, 10),
-      maxAge: parseInt(COOKIE_EXPIRATION_MS, 10),
+      maxAge,
     },
   })
 );
 
 initAuthMiddleware(app);
 
-// Middleware used for setting error and success messages as available in _ejs_ templates
 app.use((req, res, next) => {
   if (req.session) {
     res.locals.messages = req.session.messages;
@@ -70,7 +69,6 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 
-// catch 404 and forward to error handler
 app.use((req, res) => {
   res.status(404).render('pages/404');
 });
