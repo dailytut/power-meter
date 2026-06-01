@@ -6,3 +6,5 @@ yarn-error.log
 public/css/*.min.css
 public/js/*.min.js
 package-lock.json
+env-files/*.env
+!env-files/*.env.example
