@@ -1,22 +1,21 @@
 const registerRepo = require('../repository');
 
 async function createUser(req, res) {
-  let user = {};
-  const registerSuccessMessage = 'You have successfully registered, you can now log in.';
   try {
-    user = await registerRepo.createUser(req.body);
+    const user = await registerRepo.createUser(req.body);
+    if (user.email) {
+      req.session.messages = { success: 'You have successfully registered, you can now log in.' };
+      return res.redirect('/login');
+    }
   } catch (error) {
-    user = error;
+    const databaseError =
+      error.code === '23505' ? 'The email has already been taken.' : 'Something went wrong.';
+    req.session.messages = { errors: { databaseError } };
+    return res.redirect('/register');
   }
-  if (user.email) {
-    req.session.messages = { success: registerSuccessMessage };
-    res.redirect('/login');
-  }
-  const { code } = user;
-  const databaseError =
-    code === '23505' ? 'The email has already been taken.' : 'Something went wrong.';
-  req.session.messages = { databaseError };
-  res.redirect('/register');
+
+  req.session.messages = { errors: { databaseError: 'Something went wrong.' } };
+  return res.redirect('/register');
 }
 
 module.exports = createUser;
